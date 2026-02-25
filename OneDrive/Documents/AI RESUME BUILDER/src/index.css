@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
+  --color-brand-primary: #0f172a;
+  /* Midnight Slate */
+  --color-brand-secondary: #475569;
+  /* Slate 600 */
+  --color-premium-bg: #f8fafc;
+  /* Slate 50 */
+  --color-premium-border: #e2e8f0;
+  /* Slate 200 */
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-slate-900 bg-slate-50;
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden transition-all duration-300;
+  }
+
+  .premium-input {
+    @apply w-full px-4 py-2 bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900/5 focus:border-slate-900 transition-all placeholder:text-slate-400;
+  }
+
+  .premium-label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5;
+  }
+
+  .premium-button-primary {
+    @apply inline-flex items-center justify-center px-6 py-2.5 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-all active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .premium-button-secondary {
+    @apply inline-flex items-center justify-center px-6 py-2.5 bg-white border border-slate-200 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-all active:scale-[0.98] disabled:opacity-50;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide UI elements */
+  nav,
+  .no-print,
+  button,
+  .premium-card:not(.resume-page) {
+    display: none !important;
+  }
+
+  /* Ensure resume fills the print area */
+  .resume-page {
+    width: 100% !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Page break rules */
+  .print-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  h2,
+  h3,
+  h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p,
+  li {
+    page-break-inside: auto;
+  }
+
+  .flex-wrap {
+    display: flex !important;
+  }
+}
